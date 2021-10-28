@@ -1,8 +1,84 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 50px;
+  font: "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
-a {
-  color: #00B7FF;
+
+
+h3{
+  font-family: 'Franklin Gothic Medium';
 }
+
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* slide */
+/* medium and up screens */
+@media (min-width: 768px) {
+  
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+  
+  .carousel-inner .carousel-item-start.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+transform: translateX(0);
+}
+
+.body-page{
+  background-color: wheat;
+}
+/** Image of Home page */
+.image-body-page-top{
+  width: 80% !important;
+}
+.text-body-page-top{
+  text-align: center;
+  color: white;
+}
+
+.footer_home_page{
+  background-color:gray;
+}
+
+.footer-about{
+  text-decoration: none;
+  color: black;
+
+}
+
+.header-btn-icon{
+  border : none !important;
+}
+
+.library-body{
+  background-color: white !important;
+  font-size: 30px;
+}
+
+.library-body-frame{
+  width: 100%;
+  height: 480px;
+}
+
