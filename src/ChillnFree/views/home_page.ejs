@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="shortcut icon" type="img/x-icon" href="/images/logo.png" />
+    <link rel="shortcut icon" type="img/x-icon" href="../images/chill_logo.png" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
@@ -13,10 +13,12 @@
         <div class="container-fluid">
           <!-- <a class="nav-link active" aria-current="page" href="#">ChillnFree</a> -->
           <div class="ms-5">
-            <button class="btn btn-light" href="#">
-              <!-- <img src="/images/logo1.png" alt="logo" srcset=""> -->
+            <!-- <button class="btn btn-light" href="#">
               ChillnFree
-            </button>
+            </button> -->
+            <a class="navbar-brand" href="">
+              <img src="../images/chill_logo.png" alt="" width="70" height="70" class="rounded-circle img-fluid"><strong> ChillnFree</strong>
+            </a>
           </div>
           <button
             class="navbar-toggler"
@@ -58,12 +60,12 @@
                 <a class="nav-link active" href="#">Upload</a>
               </li>
               <li class="nav-item pe-5">
-                <a class="nav-link active" href="/home_signedin" id="signIn"
+                <a class="nav-link active" href="/account/signIn" id="signIn"
                   ><u>Sign in</u></a
                 >
               </li>
               <li class="nav-item pe-5">
-                <a class="nav-link active" href="#"><u>Create account</u></a>
+                <a class="nav-link active" href="/account/signUp"><u>Create account</u></a>
               </li>
             </ul>
           </div>
@@ -92,11 +94,10 @@
                   Discover, stream, and share a constantly expanding mix of
                   music from emerging and major artists around the world
                 </h2>
-                <form>
+                <form action ="/account/signUp">
                   <button
                     type="submit"
                     class="btn btn-primary btn-lg"
-                    href="/aa"
                   >
                     Sign up for free
                   </button>

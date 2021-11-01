@@ -21,6 +21,6 @@ items.forEach((el) => {
 function getMailForContactUs(){
     var emailInput = document.getElementById("emailInput").value;
     var message = document.getElementById("messageInput").value;
-    alert(emailInput,message);
+    alert(emailInput + "\n" + message);
 }
 document.getElementById("sendMessageForContactUs").addEventListener("submit",getMailForContactUs);

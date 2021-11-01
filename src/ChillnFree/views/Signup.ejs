@@ -1,67 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign up - ChillnFree</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title %></title>
+    <link
+      rel="shortcut icon"
+      type="img/x-icon"
+      href="../images/chill_logo.png"
+    />
     <!-- Bootstrap -->
-	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
   </head>
-  <body style="background-image: url(bg.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;">
-  	<!-- body code goes here -->
-	 <nav class="navbar navbar-dark bg-dark"> 
-            <a class="navbar-brand" href="">
-    			<img src="1.png" alt="" width="70" height="70" class="rounded-circle img-fluid"><strong> ChillnFree</strong>
-  			</a>
-		 	<form action="">
-		  		<button type="submit" class="btn btn-outline-light">Sign in</button>
-			</form>
-	</nav>
-	<p></p>
-  	<h3 align="center"><strong>Sign up for free to start listening</strong></h3>
-	<p></p>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4 bg-light" style="border-top-right-radius: 7%;
-            border-bottom-left-radius: 7%;
-			border-top-left-radius: 7%;
-            border-bottom-right-radius: 7%;">
-				<form action="" method="">
-					<div class="form-group">
-						<label for="email">Email address</label>
-						<input type="email" class="form-control" name="id" id="email" >
-					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" name="pw" id="password">
-					</div>
-					<div class="form-group">
-						<label for="re-password">Repeat password</label>
-						<input type="re-password" class="form-control" name="pw2" id="re-password">
-					</div>
-					<div class="form-group">
-						<label for="username">Profile name</label>
-						<input type="text" class="form-control" name="p" id="username" >
-					</div>
-					<p></p>
-					<button type="submit" class="btn btn-outline-success btn-block">Sign up</button>
-					<p></p>
-				</form>
-			</div>
-		</div>
-	</div>
-	  
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-	<script src="js/jquery-3.4.1.min.js"></script>
+  <body
+    style="
+      background-image: url(../images/bg.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    "
+  >
+    <!-- body code goes here -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="ms-5">
+          <a class="navbar-brand" href="/">
+            <img
+              src="../images/chill_logo.png"
+              alt=""
+              width="70"
+              height="70"
+              class="rounded-circle img-fluid"
+            /><strong> ChillnFree</strong>
+          </a>
+        </div>
 
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/popper.min.js"></script> 
-  <script src="js/bootstrap-4.4.1.js"></script>
+        <div class="me-5">
+          <form action="/account/signIn">
+            <button
+              type="submit"
+              class="btn btn-outline-light"
+              href="/account/signIn"
+            >
+              Sign in
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <p></p>
+    <h3 class="d-flex justify-content-center">
+      <strong>Sign up for free to start listening</strong>
+    </h3>
+    <p></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div
+          class="col-md-4 bg-light"
+          style="
+            border-top-right-radius: 7%;
+            border-bottom-left-radius: 7%;
+            border-top-left-radius: 7%;
+            border-bottom-right-radius: 7%;
+          "
+        >
+          <!-- Link to Sign in-->
+          <form action="/account/signIn" method="">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" name="id" id="email" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="pw"
+                id="password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="re-password">Repeat password</label>
+              <input
+                type="re-password"
+                class="form-control"
+                name="pw2"
+                id="re-password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="username">Profile name</label>
+              <input type="text" class="form-control" name="p" id="username" />
+            </div>
+            <p></p>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-outline-success btn-block">
+                Sign up
+              </button>
+            </div>
+
+            <p></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/popper.min.js"></script>  -->
+    <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
