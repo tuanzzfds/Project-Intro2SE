@@ -3,8 +3,9 @@ var router = express.Router();
 
 /** Get library */
 
-router.get("/", function (req, res, next) {
-  res.render("library",{title: "ChillnFree", nameOfAccount: "Account"});
+router.get("/",function (req, res, next) {
+ res.render("library",{title: "ChillnFree", nameOfAccount: "Account"});
+
 });
 
 module.exports = router;

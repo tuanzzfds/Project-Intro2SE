@@ -3,12 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//list song
+const dboperator = require('./dboperator')
 
 var homePageRouter = require('./routes/home_page');
 var usersRouter = require('./routes/users');
 var libraryRouter = require('./routes/library')
 var accountRouter = require('./routes/account')
 var app = express();
+var router = express.Router();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +27,7 @@ app.use('/', homePageRouter);
 app.use('/users', usersRouter);
 app.use('/library', libraryRouter);
 app.use('/account', accountRouter)
+app.use('/api', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,6 +45,19 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//list song
+dboperator.getSong().then(result => {
+  console.log(result);
+})
+/* router.get("/song", function (req, res) {
+  dboperator.getSong().then(result => {
+    console.log('2');
+    console.log(result);
+    res.json(result);
+    //res.render("library",(result));
+ })
+
+}); */
 module.exports = app;
 
 
