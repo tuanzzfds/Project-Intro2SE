@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sites - SPA jQuery</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow mt-5">
+          <h5 class="card-header">
+            Add Bill
+            </h5>
+            <form action="addStudent" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="MaHD">MaHD</label>
+                    <input id="MaHD" type="text" class="form-control" placeholder="MaHD" name='MaHD' autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="MaKH">MaKH</label>
+                    <input id="MaKH" type="text" class="form-control" placeholder="MaKH" name='MaKH'>
+                </div>
+                <div class="form-group">
+                    <label for="NgayLap">NgayLap</label>
+                    <input id="NgayLap" type="datetime" class="form-control" placeholder="NgayLap" name='NgayLap'>
+                </div>
+                <div class="form-group">
+                    <label for="TongTien">TongTien</label>
+                    <input id="TongTien" type="number" class="form-control" placeholder="TongTien" name='TongTien'>
+                </div>
+            </div>
+            </form>
+          <div class="card-footer text-muted">
+            <a class="btn btn-primary" href="table.html" role="button">
+                <i class="fa fa-backward" aria-hidden="true"></i>
+                List
+            </a>
+            <a id="btnSave" class="btn btn-success" href="javascript:;" role="button">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Save
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="addBill.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sites - SPA jQuery</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="table.js"></script>
+  <script>
+  var currentPage = 0;
+  function goToPage(value){
+           currentPage += value;
+           console.log(currentPage);
+          fetchTable(currentPage*100);
+  }
+  </script>
+</head>
+  <style>
+      .tableFixHeight {
+        overflow-y: auto;
+        height: 500px;
+      }
+      .tableFixHeight thead th {
+        position: sticky;
+        top: 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+      }
+      th {
+        background: #eee;
+      }
+    </style>
+  </style>
+<body>
+
+  <div class="container">
+    <br /><br />  
+     
+   
+        <label for="search_type">Filter:</label>
+        <select name="search_type" id="search_type">
+            <option value="Bill_ID">Bill_ID</option>
+            <option value="Customer_ID">Customer_ID</option>
+            <option value="Date">Date</option>
+            <option value="Total">Total</option>
+        
+        </select>
+        <div align="center">  
+            <input type="text" name="search" id="search" placeholder="search" class="form-control" />  
+        </div> 
+        <br><br>
+      
+ 
+    <br /><br />  
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow mt-5">
+
+          <h5 class="card-header">
+            Bill
+            <a class="btn btn-outline-primary float-right" href="addBill.html" role="button">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              Add Bill
+            </a>
+          </h5>
+          
+          <div class="tableFixHeight">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="text-center" scope="col">#</th>
+                <th scope="col">Bill_ID</th>
+                <th scope="col">Customer_ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody id="listBill"></tbody>
+          </table>
+          </div>
+          <div class="card-footer text-muted">
+            <span style="float: right; padding-left: 50px" id="currentPage" ></span>
+            <Button onClick="goToPage(1)" class="btn btn-dark" style="float: right">Next</Button>
+            <Button onClick="goToPage(-1)" style="float: left" >Back</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="entry-template" type="text/x-handlebars-template">
+  
+    {{#each this}}
+    <tr>
+        <th scope="row">{{ROWNUMBER}}</th>
+        <td>{{MaHD}}</td>
+        <td>{{MaKH}}</td>
+        <td class='datetime'>{{NgayLap}}</td>
+        <td>{{TongTien}}</td>
+    </tr>
+    {{/each}}
+    
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+
+</body>
+
+</html>
+
+<script>  
+  
+// $("#form").submit(function(event){
+    $(document).ready(function(){  
+        
+        $('#search').keyup(function(){  
+            search_table($(this).val());  
+         }); 
+        $('.datetime').keyup(function(){
+          this.innerHtml = 'afdsz'
+        })
+         goToPage(0);
+         function search_table(value){  
+              $('#listBill tr').each(function(){  
+                   var found = 'false';  
+                   $(this).each(function(){
+                       //console.log($("#search_type").val());
+                       if ($("#search_type").val().indexOf("Bill_ID")>=0){
+                               var id=$(this).find("td:first").text();
+                        }
+                        else if ($("#search_type").val().indexOf("Customer_ID")>=0){
+                               var id=$(this).find("td:eq(1)").text();
+                        }
+                        else if ($("#search_type").val().indexOf("Date")>=0){
+                               var id=$(this).find("td:eq(2)").text();
+                        }
+                        else if ($("#search_type").val().indexOf("Total")>=0){
+                               var id=$(this).find("td:eq(3)").text();
+                        }
+        
+                        console.log(id) ;
+                        console.log(value);
+                        console.log(value.indexOf(id));
+                        if(value.indexOf(id) >=0)  
+                        {  
+                            
+                             found = 'true';  
+                        }  
+                   });  
+                   if(found == 'true')  
+                   {  
+                        $(this).show();  
+                   }  
+                   else  
+                   {  
+                        $(this).hide();  
+                   }  
+              });  
+         }  
+        
+         
+    
+})
+// });  
+</script>  
