@@ -10,7 +10,7 @@ var homePageRouter = require('./routes/home_page');
 var usersRouter = require('./routes/users');
 var libraryRouter = require('./routes/library')
 var accountRouter = require('./routes/account')
-var playmusicRouter = require('./routes/listening_page')
+var playmusicRouter = require('./routes/playmusic')
 var app = express();
 var router = express.Router();
 

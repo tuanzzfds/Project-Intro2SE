@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET Listening page. */
 
 router.get('/', function(req, res, next) {
-  res.render("playmusic",{title: "ChillnFree"});
+  res.render("listening_page",{title: "ChillnFree"});
 });
 
 module.exports = router;
