@@ -10,6 +10,7 @@ var homePageRouter = require('./routes/home_page');
 var usersRouter = require('./routes/users');
 var libraryRouter = require('./routes/library')
 var accountRouter = require('./routes/account')
+var playmusicRouter = require('./routes/listening_page')
 var app = express();
 var router = express.Router();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', homePageRouter);
 app.use('/users', usersRouter);
 app.use('/library', libraryRouter);
+app.use('/playmusic', playmusicRouter);
 app.use('/account', accountRouter)
 app.use('/api', router);
 
