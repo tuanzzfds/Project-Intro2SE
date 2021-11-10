@@ -33,37 +33,37 @@ let All_song = [
 	{
 		name: "first song",
 		path: "/music/1.mp3",
-		img: "/img/img1.jpg",
+		img: "/images/2.jpg",
 		singer: "Son Tung MTP"
 	},
 	{
 		name: "second song",
 		path: "/music/2.mp3",
-		img: "img/img2.jpg",
+		img: "/images/2.jpg",
 		singer: "2"
 	},
 	{
 		name: "third song",
 		path: "/music/3.mp3",
-		img: "img/img3.jpg",
+		img: "/images/3.png",
 		singer: "3"
 	},
 	{
 		name: "fourth song",
 		path: "/music/4.mp3",
-		img: "/img/img4.jpg",
+		img: "/images/4.jpg",
 		singer: "4"
 	},
 	{
 		name: "fifth song",
 		path: "/music/5.mp3",
-		img: "/img/img5.jpg",
+		img: "/images/5.jpg",
 		singer: "5"
 	},
 	{
 		name: "sixth song",
 		path: "/music/6.mp3",
-		img: "/img/img6.jpg",
+		img: "/images/6.jpg",
 		singer: "6"
 	}
 ];
