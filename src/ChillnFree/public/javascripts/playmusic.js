@@ -32,7 +32,7 @@ let track = document.createElement('audio');
 let All_song = [
 	{
 		name: "first song",
-		path: "/music/1.mp3",
+		path: "http://localhost:3000/files/audio/4b8b72ee7e5f49e8119a6d77faa3c0a7.mp3",
 		img: "/images/2.jpg",
 		singer: "Son Tung MTP"
 	},

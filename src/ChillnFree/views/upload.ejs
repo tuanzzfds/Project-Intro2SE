@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= title %></title>
-    <link rel="shortcut icon" type="img/x-icon" href="../images/chill_logo.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%=title%></title>
+    <link
+      rel="shortcut icon"
+      type="img/x-icon"
+      href="../images/chill_logo.png"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
   </head>
+
   <body class="body-page">
     <header id="header-home-page">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -14,7 +22,13 @@
           <!-- <a class="nav-link active" aria-current="page" href="#">ChillnFree</a> -->
           <div class="ms-5">
             <a class="navbar-brand" href="">
-              <img src="../images/chill_logo.png" alt="" width="70" height="70" class="rounded-circle img-fluid"><strong> ChillnFree</strong>
+              <img
+                src="../images/chill_logo.png"
+                alt=""
+                width="70"
+                height="70"
+                class="rounded-circle img-fluid"
+              /><strong> ChillnFree</strong>
             </a>
           </div>
           <button
@@ -54,7 +68,7 @@
 
             <ul class="navbar-nav ms-5 me-5">
               <li class="nav-item pe-5">
-                <a class="nav-link active" href="#">Upload</a>
+                <a class="nav-link active" href="/upload">Upload</a>
               </li>
               <li class="nav-item dropdown pe-5">
                 <button
@@ -207,7 +221,7 @@
                     <a class="dropdown-item" href="#">Support</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Sign out</a>
+                    <a class="dropdown-item" href="/account/logout">Sign out</a>
                   </li>
                 </ul>
               </li>
@@ -216,153 +230,39 @@
         </div>
       </nav>
     </header>
-
-    <section class="body-page mt-5">
-      <div class="container my-2 library-body">
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <!-- <button
-              class="nav-link active"
-              id="nav-overview-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-overview"
-              type="button"
-              role="tab"
-              aria-controls="nav-overview"
-              aria-selected="true"
-            >
-              Overview
-            </button> -->
-            <button
-              class="nav-link active"
-              id="nav-likes-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-likes"
-              type="button"
-              role="tab"
-              aria-controls="nav-likes"
-              aria-selected="false"
-            >
-              Likes
-            </button>
-            <button
-              class="nav-link"
-              id="nav-playlists-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-playlists"
-              type="button"
-              role="tab"
-              aria-controls="nav-playlists"
-              aria-selected="false"
-            >
-              Playlists
-            </button>
-            <button
-              class="nav-link"
-              id="nav-albums-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-albums"
-              type="button"
-              role="tab"
-              aria-controls="nav-albums"
-              aria-selected="false"
-            >
-              Albums
-            </button>
-
-            <button
-              class="nav-link"
-              id="nav-following-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-following"
-              type="button"
-              role="tab"
-              aria-controls="nav-following"
-              aria-selected="false"
-            >
-              Following
-            </button>
-
-            <button
-              class="nav-link"
-              id="nav-history-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-history"
-              type="button"
-              role="tab"
-              aria-controls="nav-history"
-              aria-selected="false"
-            >
-              History
-            </button>
-          </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <!-- <div
-            class="tab-pane fade show active"
-            id="nav-overview"
-            role="tabpanel"
-            aria-labelledby="nav-overview-tab"
-          >
-            Overview
-          </div> -->
-
-          <div
-            class="tab-pane fade show active"
-            id="nav-likes"
-            role="tabpanel"
-            aria-labelledby="nav-likes-tab"
-          >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
-              Likes
+    <div class="container mt-5" style="height: 720px;">
+      <div class="row">
+        <div class="col-md-6 m-auto">
+          <h3 class="text-center display-5">Upload a Song to ChillnFree</h3>
+          <form action="/upload" method="post" id = "uploadForm" enctype="multipart/form-data"> <!---->
+            <div class="form-group custom-file my-3">
+              <input
+                type="file"
+                name="file"
+                id="chooseFile"
+                class="form-control custom-file-input"
+                accept=".mp3"
+              />
             </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-playlists"
-            role="tabpanel"
-            aria-labelledby="nav-playlists-tab"
-          >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
-              Playlists
+            <div class="input-group my-3">
+               <span class="input-group-text">File Name &ThickSpace;</span>
+               <input
+                 type="text"
+                 name="fileName"
+                 id="fileName"
+                 class="form-control"
+                 placeholder="Default by name of chosen song"
+               />
+             </div>
+            <div class="form-group d-grid gap-2 my-3">
+              <button type="submit" class="btn btn-primary btn-block">
+                Upload
+              </button>
             </div>
-          </div>
-
-          <div
-            class="tab-pane fade"
-            id="nav-albums"
-            role="tabpanel"
-            aria-labelledby="nav-albums-tab"
-          >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
-              Albums
-            </div>
-          </div>
-
-          <div
-            class="tab-pane fade"
-            id="nav-following"
-            role="tabpanel"
-            aria-labelledby="nav-following-tab"
-          >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
-              Following
-            </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-history"
-            role="tabpanel"
-            aria-labelledby="nav-history-tab"
-          >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
-              History
-            </div>
-          </div>
+          </form>
         </div>
       </div>
-    </section>
-
+    </div>
     <footer class="footer-page">
       <div class="container-fluid">
         <div class="row">
@@ -451,7 +351,7 @@
           </div>
           <div class="col-md-4 mt-4">
             <h3 class="d-flex justify-content-center">Contact us</h3>
-            <form>
+            <form id="sendMessageForContactUs">
               <div class="mb-3 me-3 ms-3">
                 <label for="emailInput" class="form-label">Email address</label>
                 <input
@@ -481,5 +381,5 @@
     </footer>
   </body>
   <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/javascripts/home_page.js"></script>
+  <script src="/javascripts/upload.js"></script>
 </html>

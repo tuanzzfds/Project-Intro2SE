@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><% title %> </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/fontawesome-free/css/all.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/playmusic.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header id="header-home-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <div class="ms-5">
+          <a class="navbar-brand" href="">
+            <img src="../images/chill_logo.png" alt="" width="70" height="70" class="rounded-circle img-fluid"><strong> ChillnFree</strong>
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto ms-5">
+            <li class="nav-item pe-5">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item pe-5">
+              <a class="nav-link active" href="/library">Library</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav me-auto ms-5">
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="searchInput"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </ul>
+          <% if (!nameOfAccount) { %>
+            <ul class="navbar-nav ms-5 me-5">
+              <li class="nav-item pe-5">
+                <a class="nav-link active" href="/play_music">Upload</a>
+              </li>
+              <li class="nav-item pe-5">
+                <a class="nav-link active" href="/account/signIn" id="signIn"
+                  ><u>Sign in</u></a
+                >
+              </li>
+              <li class="nav-item pe-5">
+                <a class="nav-link active" href="/account/signUp"><u>Create account</u></a>
+              </li>
+            </ul>
+          <% } else {%>
+            <ul class="navbar-nav ms-5 me-5">
+              <li class="nav-item pe-5">
+                <a class="nav-link active" href="/play_music">Upload</a>
+              </li>
+              <li class="nav-item dropdown pe-5">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownAccountButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="bi bi-person-fill"
+                      viewBox="0 2 16 16"
+                      style="display: inline-block;"
+                    >
+                      <path
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                      />
+                    </svg>
+                  </span>
+                  <%= nameOfAccount %>
+                </button>
+
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownAccountButton"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-person-rolodex"
+                          viewBox="0 2 16 16"
+                        >
+                          <path
+                            d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                          />
+                          <path
+                            d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1H1Zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1V2Z"
+                          />
+                        </svg>
+                        Profile
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-heart-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                          />
+                        </svg>
+                        Likes
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-emoji-laughing-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5c0 .501-.164.396-.415.235C6.42 6.629 6.218 6.5 6 6.5c-.218 0-.42.13-.585.235C5.164 6.896 5 7 5 6.5 5 5.672 5.448 5 6 5s1 .672 1 1.5zm5.331 3a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zm-1.746-2.765C10.42 6.629 10.218 6.5 10 6.5c-.218 0-.42.13-.585.235C9.164 6.896 9 7 9 6.5c0-.828.448-1.5 1-1.5s1 .672 1 1.5c0 .501-.164.396-.415.235z"
+                          />
+                        </svg>
+                        Who to follow
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item pe-3 d-flex align-items-center">
+                <button
+                  class="btn btn-outline-secondary header-btn-icon"
+                  data-bs-toggle="popover"
+                  title="Popover title"
+                  data-bs-content="And here's some amazing content. It's very engaging. Right?"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-bell-fill"
+                    viewBox="0 0 16 16"
+                  
+                  >
+                    <path
+                      d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"
+                    />
+                  </svg>
+                </button>
+              </li>
+              <li class="nav-item dropdown pe-3 d-flex  align-items-center">
+                <button
+                  class="btn btn-outline-secondary header-btn-icon"
+                  type="button"
+                  id="dropdownThreeDotButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-three-dots"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownThreeDotButton"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">Setting</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Legal</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Copy right</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Support</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/account/logout">Sign out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% }%>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="main">
+    <!-- <div id="logo" class="ms-5">
+      <a class="navbar-brand" href="/">
+        <img
+          src="../images/chill_logo.png"
+          alt=""
+          width="70"
+          height="70"
+          class="rounded-circle img-fluid"
+        /><strong style="color:white;"> ChillnFree</strong>
+      </a>
+    </div> -->
+    <!-- show_song_number -->
+    <div class="show_song_no">
+      <p id="present" style="margin-top: 15px;"></p>
+      <p>/</p>
+      <p id="total" style="margin-top: 15px;"></p>
+    </div>
+
+    <!--- center part --->
+    <div class="center">
+      <!--- song img --->
+      <div id="track">
+        <img id="track_image">
+        <div class="volume">
+          <p id="volume_show">50</p>
+          <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
+          <input type="range" min="0" max="100" value="50" onchange="volume_change()" id="volume">
+        </div>
+        <div class="song_detail">
+          <p id="title">title.mp3</p>
+          <p id="artist">Artist name</p>
+        </div>
+      </div>
+
+      <div id="Pomodoro">
+        <div id="circle">
+          <div id="button-timer">
+            <button id="btn1" type="button" class="btn btn-primary">Pomodoro</button>
+            <button id="btn2" type="button" class="btn btn-secondary">Short Break</button>
+            <button id="btn3" type="button" class="btn btn-success">Long break</button>
+          </div>
+
+          <div id="cirlce-graph">
+            <svg width="430" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(110,110)">
+                <circle r="100" class="e-c-base" />
+                <g transform="rotate(-90)">
+                  <circle r="100" class="e-c-progress" />
+                  <g id="e-pointer">
+                    <circle cx="100" cy="0" r="8" class="e-c-pointer" />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="setters">
+            <div class="minutes-set">
+              <button data-setter="minutes-plus">+</button>
+              <button data-setter="minutes-minus">-</button>
+            </div>
+            <div class="seconds-set">
+              <button data-setter="seconds-plus">+</button>
+              <button data-setter="seconds-minus">-</button>
+            </div>
+          </div>
+          <div class="controlls">
+            <div class="display-remain-time">00:30</div>
+            <button class="play" id="pause"></button>
+          </div>
+        </div>
+
+       
+      </div>
+
+    </div>
+
+    <!--- bottom part --->
+    <div class="bottom">
+      <!--- song title & artist name --->
+      
+
+      <!--- middle part --->
+      <div class="middle">
+        <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+        <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+        <button id="pomodoroTimer"><i class="fa fa-clock" aria-hidden="true"></i></button>
+        <button class="play-list"><i class="fas fa-list"></i></button>
+        
+      </div>
+
+      <!--- song duration part --->
+      <div class="duration">
+        <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+        <button id="auto" onclick="autoplay_switch()">Auto &nbsp;<i class="fa fa-circle-o-notch"
+            aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="playlist-box">
+      <div class="header">
+        <button id="btn-go-home" class="button go-home">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="text"><p>Playlist</p></div>    
+
+        
+          <div class="scrollbar" id="style-1">
+            <div class="left">
+              <div class="list-song"></div>
+            </div>
+            <div class="force-overflow"></div>
+          </div>
+    </div>
+  </div>
+  <!--- Add javascript file --->
+  <script src="javascripts/playmusic.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

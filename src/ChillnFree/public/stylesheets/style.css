@@ -1,22 +1,18 @@
 body {
   padding-top: 50px;
   font: "Lucida Grande", Helvetica, Arial, sans-serif;
-
 }
 
-
-
-h3{
-  font-family: 'Franklin Gothic Medium';
+h3 {
+  font-family: "Franklin Gothic Medium";
 }
-
 
 @media (max-width: 767px) {
   .carousel-inner .carousel-item > div {
-      display: none;
+    display: none;
   }
   .carousel-inner .carousel-item > div:first-child {
-      display: block;
+    display: block;
   }
 }
 
@@ -29,56 +25,53 @@ h3{
 /* slide */
 /* medium and up screens */
 @media (min-width: 768px) {
-  
   .carousel-inner .carousel-item-end.active,
   .carousel-inner .carousel-item-next {
     transform: translateX(25%);
   }
-  
-  .carousel-inner .carousel-item-start.active, 
+
+  .carousel-inner .carousel-item-start.active,
   .carousel-inner .carousel-item-prev {
     transform: translateX(-25%);
   }
 }
 
 .carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-transform: translateX(0);
+.carousel-inner .carousel-item-start {
+  transform: translateX(0);
 }
 
-.body-page{
+.body-page {
   background-color: wheat;
 }
 /** Image of Home page */
-.image-body-page-top{
+.image-body-page-top {
   width: 80% !important;
 }
-.text-body-page-top{
+.text-body-page-top {
   text-align: center;
   color: white;
 }
 
-.footer_home_page{
-  background-color:gray;
+.footer-page {
+  background-color: gray;
 }
 
-.footer-about{
+.footer-about {
   text-decoration: none;
   color: black;
-
 }
 
-.header-btn-icon{
-  border : none !important;
+.header-btn-icon {
+  border: none !important;
 }
 
-.library-body{
+.library-body {
   background-color: white !important;
   font-size: 30px;
 }
 
-.library-body-frame{
+.library-body-frame {
   width: 100%;
   height: 480px;
 }
-

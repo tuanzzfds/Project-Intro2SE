@@ -134,6 +134,9 @@ body{
 	display: flex;
 	place-items: center;
 	background: rgba(0,0,0,0.5);
+
+	padding: 0 !important;
+	margin: 0 !important;
 }
 .main{
 	position: relative;
@@ -149,6 +152,9 @@ body{
 	 inset -5px -5px 15px rgba(255,255,255,0.1),
 	 5px 5px 15px rgba(0,0,0,0.3),
 	 -5px -5px 15px rgba(255,255,255,0.1);
+	
+	
+	 padding-top: 100px !important;
 }
 .main button{
 	padding: 10px 12px;
@@ -341,8 +347,9 @@ input[type="range"]::-webkit-slider-thumb{
 	font-size: 20px;
 }
 .show_song_no{
-  position: absolute;
-  top: 5px;
+  position: fixed;
+  
+  top: 105px; /*fix*/
   right: 10px;
   width: 30px;
   height: 20px;
