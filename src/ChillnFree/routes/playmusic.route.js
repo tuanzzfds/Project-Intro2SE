@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var { SignedInAllowed } = require("../assets/SignedInAllowed");
+var { SignedInAllowed } = require("../middle_wares/SignedInAllowed");
 
 /* GET Listening page. */
 

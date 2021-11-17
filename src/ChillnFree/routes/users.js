@@ -3,7 +3,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const db = mongoose.connection;
 const Users = require("../models/users.model");
-var { SignedInAllowed } = require("../assets/SignedInAllowed");
+var { SignedInAllowed } = require("../middle_wares/SignedInAllowed");
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');

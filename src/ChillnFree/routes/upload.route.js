@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { upload } = require('../config/upload')
-var {SignedInAllowed} = require("../assets/SignedInAllowed");
+var {SignedInAllowed} = require("../middle_wares/SignedInAllowed");
 
 // const multer = require('multer')
 // const upload = multer().single('avatar')

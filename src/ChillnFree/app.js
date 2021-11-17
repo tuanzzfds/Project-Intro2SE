@@ -10,13 +10,8 @@ const methodOverride = require('method-override');
 
 
 
-//list song
-// const dboperator = require('./dboperator')
 var indexRouter = require('./routes/index.route');
-
 var app = express();
-// var router = express.Router();
-
 
 app.use(methodOverride('_method'));
 
@@ -49,23 +44,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//list song
-// dboperator.getSong().then(result => {
-//   console.log(result);
-// })
-/* router.get("/song", function (req, res) {
-  dboperator.getSong().then(result => {
-    console.log('2');
-    console.log(result);
-    res.json(result);
-    //res.render("library",(result));
- })
-
-}); */
 
 module.exports = app;
-
-
-
-
 
