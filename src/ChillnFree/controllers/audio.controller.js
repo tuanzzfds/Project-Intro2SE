@@ -1,19 +1,12 @@
-const mongoose = require('mongoose')
-const db = mongoose.connection
-const Grid = require('gridfs-stream')
 //GFS stream config
-
-let gfs
-db.on('open', () => {
-   console.log("DB connection open in AudioRouter")
-
-   //GFS stream config
-   gfs = Grid(db.db, mongoose.mongo)
-   gfs.collection('songs')
-
-})
+const { createGFS } = require('../assets/gfs')
+let gfs = false
+createGFS
+   .then((result) => { gfs = result })
+   .catch((err) => { throw new Error("Cannot create gfs: " + err.message) })
 
 const renderAudio = async (req, res, next) => {
+   if (!gfs) next()
    let filesList = new Array()
    let rawResponse = await gfs.files.find()
    await rawResponse.toArray((err, files) => {

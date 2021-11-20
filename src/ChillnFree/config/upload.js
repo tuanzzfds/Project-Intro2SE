@@ -1,41 +1,33 @@
-const crypto = require("crypto");
-const multer = require("multer");
-const { GridFsStorage } = require("multer-gridfs-storage");
-const path = require("path");
-const fs = require('fs');
-const mm = require('music-metadata');
+const cloudinary = require('cloudinary').v2
+const crypto = require("crypto")
+const multer = require("multer")
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const { uploadCoverPicture } = require('../middlewares/uploadCoverPicture')
+const { saveSongToMongo } = require('../middlewares/saveSongToMongo')
+const storage = new CloudinaryStorage({
+   cloudinary: cloudinary,
+   params: async (req, file) => {
+      return new Promise((resolve, reject) => {
+         crypto.randomBytes(16, (err, buf) => {
+            if (err) {
+               return reject(err)
+            }
+            const public_id = buf.toString("hex")
+            const fileInfo = {
+               public_id: public_id,
+               folder: 'ChillnFree/music/',
+               resource_type: 'video'
+            }
+            req.file = file
+            
+            resolve(fileInfo)
+         })
+      })
+   }
+})
 
-const MONGODB_URI =
-  "mongodb+srv://admin:QGZBWmMtgaCl8EyL@cluster0.0vzrk.mongodb.net/chillnfree?retryWrites=true&w=majority";
+const upload = multer({ storage })
 
-// create storage engine
-const storage = new GridFsStorage({
-  url: MONGODB_URI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        console.log(file);
-        // let infoSong = {}
-        // var parser = mm(fs.createReadStream(path), function (err, metadata) {
-        //   if (err) throw err;
-        //   infoSong.title = metadata.title;
-        //   infoSong.artist = metadata.artist;
-        // });
-        const filename = buf.toString("hex") + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: "songs",
-          metadata:{idUploader: req.user.id}
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const upload = multer({ storage });
 module.exports = {
-  upload: upload,
-};
+   upload: upload
+}

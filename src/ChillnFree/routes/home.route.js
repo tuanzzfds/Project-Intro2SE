@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var {SignedInAllowed} = require("../middle_wares/SignedInAllowed");
+var {SignedInAllowed} = require("../middlewares/signedInAllowed");
 
 
 //middleware

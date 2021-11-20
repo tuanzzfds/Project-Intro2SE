@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
+      integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
 
   <body class="body-page">
@@ -21,7 +27,7 @@
         <div class="container-fluid">
           <!-- <a class="nav-link active" aria-current="page" href="#">ChillnFree</a> -->
           <div class="ms-5">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="/">
               <img
                 src="../images/chill_logo.png"
                 alt=""
@@ -230,30 +236,60 @@
         </div>
       </nav>
     </header>
-    <div class="container mt-5" style="height: 720px;">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-md-6 m-auto">
           <h3 class="text-center display-5">Upload a Song to ChillnFree</h3>
-          <form action="/upload" method="post" id = "uploadForm" enctype="multipart/form-data"> <!---->
+          <form
+            action="/upload"
+            method="post"
+            id="uploadForm"
+            enctype="multipart/form-data"
+          >
             <div class="form-group custom-file my-3">
               <input
                 type="file"
                 name="file"
                 id="chooseFile"
                 class="form-control custom-file-input"
-                accept=".mp3"
+                accept="audio/*"
+                multiple
+              />
+            </div>
+            <!-- <div class="form-group custom-file my-3">
+                  <input type="file" name="file2" id="chooseFile2" class="form-control custom-file-input" accept=".mp3" />
+               </div> -->
+            <div class="form-group my-3">
+              <img
+                src=""
+                alt="no img"
+                id="picture-cover"
+                class="d-none w-100"
               />
             </div>
             <div class="input-group my-3">
-               <span class="input-group-text">File Name &ThickSpace;</span>
-               <input
-                 type="text"
-                 name="fileName"
-                 id="fileName"
-                 class="form-control"
-                 placeholder="Default by name of chosen song"
-               />
-             </div>
+              <span class="input-group-text">Title</span>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="form-control"
+                placeholder="Default by chosen song"
+              />
+            </div>
+            <div class="input-group my-3">
+              <span class="input-group-text">Artist</span>
+              <input
+                type="text"
+                name="artist"
+                id="artist"
+                class="form-control"
+                placeholder="Default by chosen song"
+              />
+            </div>
+            <div class="d-none">
+              <input type="text" name="image" id="image" />
+            </div>
             <div class="form-group d-grid gap-2 my-3">
               <button type="submit" class="btn btn-primary btn-block">
                 Upload

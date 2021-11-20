@@ -1,32 +1,31 @@
 const express = require('express')
 const router = express.Router()
 const { upload } = require('../config/upload')
-var {SignedInAllowed} = require("../middle_wares/SignedInAllowed");
+const { SignedInAllowed } = require("../middlewares/signedInAllowed")
+const { saveRedirectUrlToCookie } = require('../middlewares/redirectUrl')
+const { uploadCoverPicture } = require('../middlewares/uploadCoverPicture')
+const { saveSongToMongo } = require('../middlewares/saveSongToMongo')
 
-// const multer = require('multer')
-// const upload = multer().single('avatar')
 
 
 //GET @route /upload
-// router.get('/', (req, res, next) => {
-//    res.render('upload')
-// })
-
-router.get("/", SignedInAllowed, function (req, res, next) {
+router.get("/", SignedInAllowed, saveRedirectUrlToCookie, function (req, res, next) {
    if (!req.user) {
-     res.redirect("account/signin");
-   } else {
-     let user = req.user;
-     //let token = req.cookies['session-token'];
-     res.render("upload", {
-       title: "ChillnFree - Upload",
-       nameOfAccount: user.name,
-     });
+      res.redirect("account/signin")
    }
- });
+   else {
+      res.clearCookie('redirectUrl')
+      let user = req.user
+      //let token = req.cookies['session-token']
+      res.render("upload", {
+         title: "ChillnFree - Upload",
+         nameOfAccount: user.name,
+      })
+   }
+})
 
-router.post('/',SignedInAllowed, upload.single('file'), (req, res, next) => {
-   res.redirect('/upload');
+router.post('/', SignedInAllowed, saveRedirectUrlToCookie, upload.single('file'), uploadCoverPicture, saveSongToMongo, (req, res, next) => {
+   res.redirect('/upload')
 })
 
 module.exports = router

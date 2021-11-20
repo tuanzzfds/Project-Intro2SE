@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 
 // Connect database
 const { mongoose } = require('./config/connectMongoDB');
 const methodOverride = require('method-override');
+// Connect cloudinary
+const cloudinary = require('./config/configCloudinary');
 
 
 
