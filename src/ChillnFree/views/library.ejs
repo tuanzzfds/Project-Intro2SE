@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
-    <link rel="shortcut icon" type="img/x-icon" href="../images/chill_logo.png" />
+    <link
+      rel="shortcut icon"
+      type="img/x-icon"
+      href="../images/chill_logo.png"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
@@ -11,10 +15,15 @@
     <header id="header-home-page">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <!-- <a class="nav-link active" aria-current="page" href="#">ChillnFree</a> -->
           <div class="ms-5">
             <a class="navbar-brand" href="/">
-              <img src="../images/chill_logo.png" alt="" width="70" height="70" class="rounded-circle img-fluid"><strong> ChillnFree</strong>
+              <img
+                src="../images/chill_logo.png"
+                alt=""
+                width="70"
+                height="70"
+                class="rounded-circle img-fluid"
+              /><strong> ChillnFree</strong>
             </a>
           </div>
           <button
@@ -64,23 +73,9 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      class="bi bi-person-fill"
-                      viewBox="0 2 16 16"
-                    >
-                      <path
-                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                      />
-                    </svg>
-                  </span>
-                  <%= nameOfAccount %>
+                <img src=<%= user.picture%> class="rounded-circle" alt="" with= "20" height= "20">
+                <%= user.name %>
                 </button>
-
                 <ul
                   class="dropdown-menu"
                   aria-labelledby="dropdownAccountButton"
@@ -313,7 +308,14 @@
             role="tabpanel"
             aria-labelledby="nav-likes-tab"
           >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
+            <div
+              class="
+                d-flex
+                justify-content-center
+                align-items-center
+                library-body-frame
+              "
+            >
               Likes
             </div>
           </div>
@@ -323,7 +325,14 @@
             role="tabpanel"
             aria-labelledby="nav-playlists-tab"
           >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
+            <div
+              class="
+                d-flex
+                justify-content-center
+                align-items-center
+                library-body-frame
+              "
+            >
               Playlists
             </div>
           </div>
@@ -334,7 +343,14 @@
             role="tabpanel"
             aria-labelledby="nav-albums-tab"
           >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
+            <div
+              class="
+                d-flex
+                justify-content-center
+                align-items-center
+                library-body-frame
+              "
+            >
               Albums
             </div>
           </div>
@@ -345,7 +361,14 @@
             role="tabpanel"
             aria-labelledby="nav-following-tab"
           >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
+            <div
+              class="
+                d-flex
+                justify-content-center
+                align-items-center
+                library-body-frame
+              "
+            >
               Following
             </div>
           </div>
@@ -355,7 +378,14 @@
             role="tabpanel"
             aria-labelledby="nav-history-tab"
           >
-            <div class="d-flex justify-content-center align-items-center library-body-frame">
+            <div
+              class="
+                d-flex
+                justify-content-center
+                align-items-center
+                library-body-frame
+              "
+            >
               History
             </div>
           </div>
@@ -459,6 +489,7 @@
                   class="form-control"
                   id="emailInput"
                   placeholder="name@example.com"
+                  required
                 />
               </div>
               <div class="mb-3 me-3 ms-3">
@@ -468,6 +499,7 @@
                   id="messageInput"
                   rows="3"
                   placeholder="Type message here"
+                  required
                 ></textarea
                 ><br />
                 <button type="submit" class="btn btn-primary float-end me-3">

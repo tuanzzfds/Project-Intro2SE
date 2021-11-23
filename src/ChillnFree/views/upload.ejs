@@ -84,21 +84,14 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      class="bi bi-person-fill"
-                      viewBox="0 2 16 16"
-                    >
-                      <path
-                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                      />
-                    </svg>
-                  </span>
-                  <%= nameOfAccount %>
+                  <img
+                    src=<%=user.picture%> 
+                    class="rounded-circle"
+                    alt="CinqueTerre"
+                    with="20"
+                    height="20"
+                  />
+                  <%= user.name %>
                 </button>
 
                 <ul
@@ -256,15 +249,12 @@
                 multiple
               />
             </div>
-            <!-- <div class="form-group custom-file my-3">
-                  <input type="file" name="file2" id="chooseFile2" class="form-control custom-file-input" accept=".mp3" />
-               </div> -->
-            <div class="form-group my-3">
+            <div class="form-group my-3 d-flex justify-content-center">
               <img
                 src=""
                 alt="no img"
                 id="picture-cover"
-                class="d-none w-100"
+                class="d-none w-25 h-25"
               />
             </div>
             <div class="input-group my-3">
@@ -287,11 +277,18 @@
                 placeholder="Default by chosen song"
               />
             </div>
-            <div class="d-none">
-              <input type="text" name="image" id="image" />
+            <div class="input-group my-3">
+              <span class="input-group-text">Genre</span>
+              <input
+                type="text"
+                name="genre"
+                id="genre"
+                class="form-control"
+                placeholder="Default by chosen song"
+              />
             </div>
             <div class="form-group d-grid gap-2 my-3">
-              <button type="submit" class="btn btn-primary btn-block">
+              <button type="submit" class="btn btn-primary btn-block" id="btn-submit" >
                 Upload
               </button>
             </div>
@@ -395,6 +392,7 @@
                   class="form-control"
                   id="emailInput"
                   placeholder="name@example.com"
+                  required
                 />
               </div>
               <div class="mb-3 me-3 ms-3">
@@ -404,6 +402,7 @@
                   id="messageInput"
                   rows="3"
                   placeholder="Type message here"
+                  required
                 ></textarea
                 ><br />
                 <button type="submit" class="btn btn-primary float-end me-3">

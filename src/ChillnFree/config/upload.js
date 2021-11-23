@@ -1,33 +1,45 @@
-const cloudinary = require('cloudinary').v2
-const crypto = require("crypto")
-const multer = require("multer")
-const { CloudinaryStorage } = require('multer-storage-cloudinary')
-const { uploadCoverPicture } = require('../middlewares/uploadCoverPicture')
-const { saveSongToMongo } = require('../middlewares/saveSongToMongo')
+const cloudinary = require("cloudinary").v2;
+const crypto = require("crypto");
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const storage = new CloudinaryStorage({
-   cloudinary: cloudinary,
-   params: async (req, file) => {
-      return new Promise((resolve, reject) => {
-         crypto.randomBytes(16, (err, buf) => {
-            if (err) {
-               return reject(err)
-            }
-            const public_id = buf.toString("hex")
-            const fileInfo = {
-               public_id: public_id,
-               folder: 'ChillnFree/music/',
-               resource_type: 'video'
-            }
-            req.file = file
-            
-            resolve(fileInfo)
-         })
-      })
-   }
-})
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+     return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buf) => {
+           if (err) {
+              return reject(err);
+           }
+           console.log(file);
+           const public_id = buf.toString("hex");
+           let resource_type = 'video';
+           let folder = 'ChillnFree/music/';
+           if (file.mimetype === 'image/jpeg'){
+              resource_type = 'image';
+              folder = 'ChillnFree/coverpicture/';
+           }
+           const fileInfo = {
+              public_id: public_id,
+              folder: folder,
+              resource_type: resource_type
+           };
 
-const upload = multer({ storage })
+          //  if(!req.upload){
+          //     req.upload = new Array();
+          //     req.upload.push(file);
+          //  }
+          //  else {
+          //     req.upload.push(file);
+          //  }
+
+           resolve(fileInfo);
+        });
+     });
+  }
+});
+
+const upload = multer({ storage });
 
 module.exports = {
-   upload: upload
-}
+  upload: upload,
+};

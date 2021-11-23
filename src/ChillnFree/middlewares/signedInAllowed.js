@@ -15,7 +15,6 @@ function SignedInAllowed(req, res, next) {
     user.name = payload.name;
     user.email = payload.email;
     user.picture = payload.picture;
-    // console.log(JSON.stringify(payload));
     user.id = payload.sub;
   }
   verify()

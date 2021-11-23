@@ -16,7 +16,7 @@ const uploadCoverPicture = (req, res, next) => {
          }
          else {
             req.image = result
-            
+            console.log(result);
 
             next()
          }
