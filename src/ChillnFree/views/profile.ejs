@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= title %></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%=title%></title>
     <link
       rel="shortcut icon"
       type="img/x-icon"
@@ -10,11 +13,19 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
+      integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
+
   <body class="body-page">
     <header id="header-home-page">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
+          <!-- <a class="nav-link active" aria-current="page" href="#">ChillnFree</a> -->
           <div class="ms-5">
             <a class="navbar-brand" href="/">
               <img
@@ -54,7 +65,7 @@
                   placeholder="Search"
                   aria-label="Search"
                   id="searchInput"
-                  name = 'keyword'
+                  name="keyword"
                 />
                 <button class="btn btn-outline-success" type="submit">
                   Search
@@ -74,15 +85,22 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                <img src=<%= user.picture%> class="rounded-circle" alt="" with= "20" height= "20">
-                <%= user.name %>
+                  <img
+                    src=<%=user.picture%> 
+                    class="rounded-circle"
+                    alt="CinqueTerre"
+                    with="20"
+                    height="20"
+                  />
+                  <%= user.name %>
                 </button>
+
                 <ul
                   class="dropdown-menu"
                   aria-labelledby="dropdownAccountButton"
                 >
                   <li>
-                    <a class="dropdown-item" href="/users/<%=user.id%>">
+                    <a class="dropdown-item">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +221,7 @@
                     <a class="dropdown-item" href="#">Support</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Sign out</a>
+                    <a class="dropdown-item" href="/account/logout">Sign out</a>
                   </li>
                 </ul>
               </li>
@@ -212,188 +230,27 @@
         </div>
       </nav>
     </header>
-
-    <section class="body-page mt-5">
-      <div class="container my-2 library-body">
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <!-- <button
-              class="nav-link active"
-              id="nav-overview-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-overview"
-              type="button"
-              role="tab"
-              aria-controls="nav-overview"
-              aria-selected="true"
-            >
-              Overview
-            </button> -->
-            <button
-              class="nav-link active"
-              id="nav-likes-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-likes"
-              type="button"
-              role="tab"
-              aria-controls="nav-likes"
-              aria-selected="false"
-            >
-              Likes
-            </button>
-            <button
-              class="nav-link"
-              id="nav-playlists-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-playlists"
-              type="button"
-              role="tab"
-              aria-controls="nav-playlists"
-              aria-selected="false"
-            >
-              Playlists
-            </button>
-            <button
-              class="nav-link"
-              id="nav-albums-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-albums"
-              type="button"
-              role="tab"
-              aria-controls="nav-albums"
-              aria-selected="false"
-            >
-              Albums
-            </button>
-
-            <button
-              class="nav-link"
-              id="nav-following-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-following"
-              type="button"
-              role="tab"
-              aria-controls="nav-following"
-              aria-selected="false"
-            >
-              Following
-            </button>
-
-            <button
-              class="nav-link"
-              id="nav-history-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-history"
-              type="button"
-              role="tab"
-              aria-controls="nav-history"
-              aria-selected="false"
-            >
-              History
-            </button>
-          </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <!-- <div
-            class="tab-pane fade show active"
-            id="nav-overview"
-            role="tabpanel"
-            aria-labelledby="nav-overview-tab"
-          >
-            Overview
-          </div> -->
-
-          <div
-            class="tab-pane fade show active"
-            id="nav-likes"
-            role="tabpanel"
-            aria-labelledby="nav-likes-tab"
-          >
-            <div
-              class="
-                d-flex
-                justify-content-center
-                align-items-center
-                library-body-frame
-              "
-            >
-              Likes
+    <div class="container rounded bg-white mt-5 mb-5" style="border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.295) 0 0 10px;">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="<%=user.picture%>"></div>
             </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-playlists"
-            role="tabpanel"
-            aria-labelledby="nav-playlists-tab"
-          >
-            <div
-              class="
-                d-flex
-                justify-content-center
-                align-items-center
-                library-body-frame
-              "
-            >
-              Playlists
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h3>Profile Infomation</h3>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Email address</label><input type="text" class="form-control" placeholder="<%=user.email%>"  readonly></div>
+                        <div class="col-md-12">&nbsp;</div>
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="<%=user.name%>" readonly></div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div
-            class="tab-pane fade"
-            id="nav-albums"
-            role="tabpanel"
-            aria-labelledby="nav-albums-tab"
-          >
-            <div
-              class="
-                d-flex
-                justify-content-center
-                align-items-center
-                library-body-frame
-              "
-            >
-              Albums
+            <div class="col-md-4">
             </div>
-          </div>
-
-          <div
-            class="tab-pane fade"
-            id="nav-following"
-            role="tabpanel"
-            aria-labelledby="nav-following-tab"
-          >
-            <div
-              class="
-                d-flex
-                justify-content-center
-                align-items-center
-                library-body-frame
-              "
-            >
-              Following
-            </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-history"
-            role="tabpanel"
-            aria-labelledby="nav-history-tab"
-          >
-            <div
-              class="
-                d-flex
-                justify-content-center
-                align-items-center
-                library-body-frame
-              "
-            >
-              History
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
+    </div>
     <footer class="footer-page">
       <div class="container-fluid">
         <div class="row">
@@ -482,7 +339,7 @@
           </div>
           <div class="col-md-4 mt-4">
             <h3 class="d-flex justify-content-center">Contact us</h3>
-            <form>
+            <form id="sendMessageForContactUs">
               <div class="mb-3 me-3 ms-3">
                 <label for="emailInput" class="form-label">Email address</label>
                 <input
@@ -514,5 +371,5 @@
     </footer>
   </body>
   <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/javascripts/home_page.js"></script>
+  <script src="/javascripts/upload.js"></script>
 </html>

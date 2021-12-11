@@ -48,13 +48,14 @@
               </li>
             </ul>
             <ul class="navbar-nav me-auto ms-5">
-              <form class="d-flex">
+              <form class="d-flex" action="/search" method="get">
                 <input
                   class="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
-                  id="searchInput"
+                  id="keyword"
+                  name = "keyword"
                 />
                 <button class="btn btn-outline-success" type="submit">
                   Search
@@ -97,7 +98,7 @@
                     width="20"
                     height="20"
                   />
-                  <%=user.name %>
+                  <%=user.name%>
                 </button>
 
                 <ul
@@ -105,7 +106,7 @@
                   aria-labelledby="dropdownAccountButton"
                 >
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/users/<%=user.id%>">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

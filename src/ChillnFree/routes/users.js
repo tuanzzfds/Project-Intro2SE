@@ -17,4 +17,16 @@ router.get('/',SignedInAllowed, async function(req, res, next) {
   res.json(user);
 });
 
+router.get('/:id',SignedInAllowed, async function(req, res, next) {
+  if (!req.user) {
+      res.redirect("/account/signin");
+    } else {
+      res.clearCookie("redirectUrl");
+      res.render("profile", {
+        title: "ChillnFree - Profile",
+        user: req.user
+    });
+    }
+});
+
 module.exports = router;
