@@ -9,6 +9,7 @@ var playmusicRouter = require('./playmusic.route');
 var filesRouter = require('./files.route');
 var uploadRouter = require('./upload.route');
 var apiRouter = require('./api.route');
+var adminRouter = require('./admin.route');
 
 
 router.use('/', homePageRouter);
@@ -20,5 +21,6 @@ router.use('/router', router);
 router.use('/upload', uploadRouter);
 router.use('/files', filesRouter);
 router.use('/api',apiRouter);
+router.use('/admin',adminRouter);
 
 module.exports = router

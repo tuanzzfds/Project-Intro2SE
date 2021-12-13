@@ -7,7 +7,9 @@ const { renderPlayMusicPage } = require('../controllers/playmusic.controller')
 // router.get('/', function(req, res, next) {
 //   res.render("listening_page",{title: "ChillnFree - Play music"})
 // })
-router.get("/", SignedInAllowed, renderPlayMusicPage)
+router.get("/", SignedInAllowed, renderPlayMusicPage,(req, res, next)=>{
+   
+})
 
 //@route GET /playmusic/test/:filename
 //@desc render testMp3 and send metadata tags to client side

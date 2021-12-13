@@ -385,7 +385,7 @@
           </div>
           <div class="col-md-4 mt-4">
             <h3 class="d-flex justify-content-center">Contact us</h3>
-            <form id="sendMessageForContactUs">
+            <form id="sendMessageForContactUs" action="/api/report" method="post">
               <div class="mb-3 me-3 ms-3">
                 <label for="emailInput" class="form-label">Email address</label>
                 <input
@@ -393,6 +393,7 @@
                   class="form-control"
                   id="emailInput"
                   placeholder="name@example.com"
+                  name="email"
                   required
                 />
               </div>
@@ -403,6 +404,7 @@
                   id="messageInput"
                   rows="3"
                   placeholder="Type message here"
+                  name="message"
                   required
                 ></textarea
                 ><br />
@@ -418,4 +420,5 @@
   </body>
   <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/javascripts/upload.js"></script>
+  <script src="/javascripts/report.js"></script>
 </html>

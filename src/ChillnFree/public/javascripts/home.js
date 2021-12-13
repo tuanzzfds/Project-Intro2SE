@@ -34,9 +34,11 @@ async function getTopSongs() {
   });
 
   const data = await response.json();
-  addCarouselItem(topMusic, data[0].path, data[0].picture_src, true);
+  href= "/playmusic?album=top-music&id=";
+
+  addCarouselItem(topMusic, href+ data[0]._id, data[0].picture_src, true);
   for (let i = 1; i < data.length; ++i) {
-    addCarouselItem(topMusic, data[i].path, data[i].picture_src, false);
+    addCarouselItem(topMusic, href+data[i]._id, data[i].picture_src, false);
   }
   const topMusicSlides = document.querySelectorAll(
     "#top-music-slide .carousel-item"
@@ -50,9 +52,10 @@ async function getChillSongs() {
   });
 
   const data = await response.json();
-  addCarouselItem(chillMusic, data[0].path, data[0].picture_src, true);
+  href= "/playmusic?album=chill-music&id=";
+  addCarouselItem(chillMusic, href+data[0]._id, data[0].picture_src, true);
   for (let i = 1; i < data.length; ++i) {
-    addCarouselItem(chillMusic, data[i].path, data[i].picture_src, false);
+    addCarouselItem(chillMusic, href+data[i]._id, data[i].picture_src, false);
   }
   const chillMusicSlides = document.querySelectorAll(
     "#chill-music-slide .carousel-item"
@@ -66,9 +69,10 @@ async function getStudySongs() {
   });
 
   const data = await response.json();
-  addCarouselItem(studyMusic, data[0].path, data[0].picture_src, true);
+  href= "/playmusic?album=study-music&id=";
+  addCarouselItem(studyMusic,href+data[0]._id, data[0].picture_src, true);
   for (let i = 1; i < data.length; ++i) {
-    addCarouselItem(studyMusic, data[i].path, data[i].picture_src, false);
+    addCarouselItem(studyMusic, href+data[i]._id, data[i].picture_src, false);
   }
   const studyMusicSlides = document.querySelectorAll(
     "#study-music-slide .carousel-item"
@@ -82,9 +86,10 @@ async function getSleepSongs() {
   });
 
   const data = await response.json();
-  addCarouselItem(sleepMusic, data[0].path, data[0].picture_src, true);
+  href= "/playmusic?album=sleep-music&id=";
+  addCarouselItem(sleepMusic, href + data[0]._id, data[0].picture_src, true);
   for (let i = 1; i < data.length; ++i) {
-    addCarouselItem(sleepMusic, data[i].path, data[i].picture_src, false);
+    addCarouselItem(sleepMusic,href + data[i]._id , data[i].picture_src, false);
   }
   const sleepMusicSlides = document.querySelectorAll(
     "#sleep-music-slide .carousel-item"
@@ -128,12 +133,3 @@ function addCarouselItem(parent, href, secureUrlImg, active = false) {
   parent.appendChild(carousel);
 }
 
-/**-> Contact */
-function getMailForContactUs() {
-  var emailInput = document.getElementById("emailInput").value;
-  var message = document.getElementById("messageInput").value;
-  alert(emailInput + "\n" + message);
-}
-document
-  .getElementById("sendMessageForContactUs")
-  .addEventListener("submit", getMailForContactUs);

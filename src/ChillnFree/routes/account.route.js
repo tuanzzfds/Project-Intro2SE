@@ -47,6 +47,7 @@ router.post("/login", function (req, res, next) {
             name: user.name,
             email: user.email,
             picture: user.picture,
+            createdAt: new Date().toISOString()
           })
             .save()
             .then((newUser) => {

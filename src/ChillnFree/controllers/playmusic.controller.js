@@ -1,25 +1,45 @@
+const { json } = require('express');
 const Song = require('../models/songs.model');
 const Users = require("../models/users.model");
+const {
+   showAllSongsInJSON,
+   showAllChillSongsInJSON,
+   showAllStudySongsInJSON,
+   showAllSleepSongsInJSON,
+ } = require("../controllers/files.controller");
 
-const renderPlayMusicPage = (req, res, next) => {
-   Song.find({}, async (err, songs) => {
-      //check if the file exists
-      if (!songs || songs.length === 0 || err) {
-         res.json({ message: "there is no song"})
+const renderPlayMusicPage = async (req, res, next) => {
+   const album = req.query.album;
+   const id_song = req.query.id;
+   let required_songs;
+   let jsons = {
+      title: "ChillnFree - Play music",
+      user: false,
+   }
+   if (req.user){
+      jsons.user = req.user;
+   }
+
+   if (album){
+      if (album === "top-music"){
+         required_songs = await Song.find({});
       }
-      else {
-         json = {
-            title: "ChillnFree - Play music",
-            user: false,
-            songs: songs
-         }
-         if (req.user){
-            json.user = req.user;
-         }
-         res.render('playmusic', json)
+      if (album === "chill-music"){
+         required_songs = await Song.find({genre:"Chill"});
       }
-   })
+      if (album === "study-music"){
+         required_songs = await Song.find({genre:"Study"});
+      }
+      if (album === "sleep-music"){
+         required_songs = await Song.find({genre:"Sleep"});
+      }
+   }else{
+      required_songs = await Song.find({_id:id_song})
+   }
+   jsons.songs = required_songs;
+   res.render('playmusic',jsons);
 }
+
 
 module.exports = {
    renderPlayMusicPage: renderPlayMusicPage

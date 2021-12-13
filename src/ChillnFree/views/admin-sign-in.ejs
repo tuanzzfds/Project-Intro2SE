@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title %></title>
+    <link
+      rel="shortcut icon"
+      type="img/x-icon"
+      href="../images/chill_logo.png"
+    />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+  </head>
+  <body
+    style="
+      background-image: url(../images/bg.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    "
+  >
+    <!-- body code goes here -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="ms-5">
+          <a class="navbar-brand" href="/">
+            <img
+              src="../images/chill_logo.png"
+              alt=""
+              width="70"
+              height="70"
+              class="rounded-circle img-fluid"
+            /><strong> ChillnFree</strong>
+          </a>
+        </div>
+
+        <div class="me-5">
+          <a href="/">
+            <button
+              type="submit"
+              class="btn btn-outline-light"
+            >
+              Back to home
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <p></p>
+    <h3 class="d-flex justify-content-center">
+      <strong>Admin ChillnFree</strong>
+    </h3>
+    <p></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div
+          class="col-md-4 bg-light"
+          style="
+            border-top-right-radius: 7%;
+            border-bottom-left-radius: 7%;
+            border-top-left-radius: 7%;
+            border-bottom-right-radius: 7%;
+          "
+        >
+          <!-- Link to Sign in-->
+          <form action="/admin/sign-in" method = "post">
+            <div class="form-group">
+              <label for="user">User name</label>
+              <input type="user" class="form-control" name="user" id="user" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="password"
+              />
+            </div>
+            <p></p>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-outline-success btn-block">
+                Sign in
+              </button>
+            </div>
+
+            <p></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/popper.min.js"></script>  -->
+    <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

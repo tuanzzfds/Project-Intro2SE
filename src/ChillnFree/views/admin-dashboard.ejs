@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Admin Dashboard</title>
+  <style>
+    p {
+      text-align: justify;
+    }
+
+    .my-custom-scrollbar {
+      position: relative;
+      height: 400px;
+      overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+      display: block;
+    }
+  </style>
+</head>
+
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="ms-5">
+        <a class="navbar-brand" href="/">
+          <img
+            src="../images/chill_logo.png"
+            alt=""
+            width="70"
+            height="70"
+            class="rounded-circle img-fluid"
+          /><strong> ChillnFree</strong>
+        </a>
+      </div>
+
+      <div class="me-5">
+        <a href="/">
+          <button
+            type="submit"
+            class="btn btn-outline-light"
+          >
+            Back to home
+          </button>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <main class="row row-header p-4">
+    <div class="col-lg-6" id="users-management">
+      <div class="row row-content">
+        <div class="col-xl-6 my-2">
+          <div class="card">
+            <div class="card-header bg-success">User registration</div>
+            <div class="card-header">
+              User created:
+              <span><%= recentlyRegisteredUsers.length %> </span>
+            </div>
+            <ul class="list-group list-group-flush" style="max-height: 300px; overflow: scroll">
+              <% if (recentlyRegisteredUsers) { %> 
+                <% recentlyRegisteredUsers.forEach(user => { %>
+              <li class="list-group-item">
+                <strong><%= user.name%></strong><br />
+                <small>Created at: <%= user.email %> </small>
+                <small>Created at: <%= user.createdAt %> </small>
+              </li>
+                <% }) %>
+               <% } %>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-6 my-2">
+          <div class="card">
+            <div class="card-header bg-success">User feedbacks/reports</div>
+            <div class="card-header">
+              Feedback/Report:
+              <span><%= feedbacks.length %> </span>
+            </div>
+            <ul class="list-group list-group-flush" style="max-height: 300px; overflow: scroll">
+              <% if (feedbacks) { %> 
+                <% feedbacks.forEach(feedback => { %>
+              <li class="list-group-item">
+                <strong>
+                  <a class="btn" href="mailto:<%= feedback.email%>">
+                    <i class="far fa-envelope"></i>
+                  </a>
+                  <%= feedback.email%>&ThickSpace; </strong>
+                  <% if (feedback.isSolved) { %> 
+                    <i class="fas fa-check" style="color: green;"></i>
+                    <% } %> 
+                    <% if (!feedback.isSolved) { %> 
+                      <i class="fas fa-times" style="color: red;"></i>
+                    <% } %> 
+                  <br />
+                <p class="text-justify">Date: <%= feedback.date %></p>
+                <p class="text-justify">Content: <%= feedback.message %></p>
+               
+              </li>
+              <% }) %> 
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header bg-success">All user:</div>
+            <div class="card-header">
+              User count:
+              <span><%= allUsers.length %> </span>
+            </div>
+            <ul class="list-group list-group-flush" style="max-height: 300px; overflow: scroll">
+              <% if (recentlyRegisteredUsers) { %>
+               <% allUsers.forEach(user =>{ %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-9">
+                    <strong><%= user.name%></strong><br />
+                    <small>Email: <%= user.email %> </small><br>
+                    <small>Created at: <%= user.createdAt %> </small>
+                  </div>
+                  <div class="col-3">
+                    <div class="btn">
+                      <i class="fas fa-ban"></i>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <% }) %> 
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" id="songs-management">
+      <div class="col-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="songs-tab" data-bs-toggle="tab" data-bs-target="#songs" type="button" role="tab" aria-controls="songs" aria-selected="true">
+              Songs
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="artist-tab" data-bs-toggle="tab" data-bs-target="#artist" type="button" role="tab" aria-controls="artist" aria-selected="false">
+              Artist
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="playlist-tab" data-bs-toggle="tab" data-bs-target="#playlist" type="button" role="tab" aria-controls="playlist" aria-selected="false">
+              Playlist
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="
+                tab-pane
+                fade
+                show
+                active
+                table-wrapper-scroll-y
+                my-custom-scrollbar
+              " id="songs" role="tabpanel" aria-labelledby="songs-tab">
+            <table class="table table-striped table-responsive" style="overflow: scroll; max-height: 300px">
+              <thead class="table-success">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Cover</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Genre</th>
+                  <th scope="col">Uploader</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for( let index = 0; index < songs.length; index++ ) { %>
+                <tr>
+                  <th scope="row" class="align-middle"><%= index + 1 %></th>
+                  <th class="align-middle">
+                    <img src="<%= songs[index].picture_src %> " alt="No picture found" style="width: 100px" />
+                  </th>
+                  <td class="align-middle">
+                    <h3><%= songs[index].title %></h3>
+                  </td>
+                  <td class="align-middle text-center">
+                    <%= songs[index].artist %>
+                  </td>
+                  <td class="align-middle text-center">
+                    <%= songs[index].genre %>
+                  </td>
+                  <td class="align-middle text-center">
+                    <%= songs[index].uploader %>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="artist" role="tabpanel" aria-labelledby="artist-tab">
+            Function isn't available!
+          </div>
+          <div class="tab-pane fade" id="playlist" role="tabpanel" aria-labelledby="playlist-tab">
+            Function isn't available!
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="col-12 d-none">
+        <table class="
+              table table-striped table-responsive table-wrapper-scroll-y
+              my-custom-scrollbar
+            " style="overflow: scroll; max-height: 300px">
+          <thead class="table-success">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Cover</th>
+              <th scope="col">Title</th>
+              <th scope="col">Artist</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Uploader</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for( let index = 0; index < songs.length; index++ ) { %>
+            <tr>
+              <th scope="row" class="align-middle"><%= index + 1 %></th>
+              <th class="align-middle">
+                <img src="<%= songs[index].picture_src %> " alt="No picture found" style="width: 100px" />
+              </th>
+              <td class="align-middle">
+                <h3><%= songs[index].title %></h3>
+              </td>
+              <td class="align-middle text-center">
+                <%= songs[index].artist %>
+              </td>
+              <td class="align-middle text-center">
+                <%= songs[index].genre %>
+              </td>
+              <td class="align-middle text-center">
+                <%= songs[index].uploader %>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

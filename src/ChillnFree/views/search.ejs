@@ -255,17 +255,18 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <% if(check){ %>
                 <% for(var i=0; i<list.length; i++) {%>
-                    <div class="col-md-2">
+                    <a class="col-md-2" href="/playmusic?id=<%= list[i]._id%>" style="text-decoration: none;">
                         <div class="card h-100">
-                            <img src="<%= list[i].picture_src %>" class="card-img-top">
-                            <div class="card-body">
-                            <h6 class="card-title"><%= list[i].title %></h6>
-                            </div>
-                            <div class="card-footer">
-                            <small class="text-muted">Artist: <%= list[i].artist %></small>
-                            </div>
-                        </div>
-                    </div>
+                          <img src="<%= list[i].picture_src %>" class="card-img-top">
+                          <div class="card-body">
+                          <h6 class="card-title"><%= list[i].title %></h6>
+                          </div>
+                          <div class="card-footer">
+                          <small class="text-muted">Artist: <%= list[i].artist %></small>
+                          </div>
+                      </div>
+              
+                    </a>
                 <% } %>
             <% } else{ %>  
                 <h3>No result found</h3>
@@ -368,7 +369,7 @@
           </div>
           <div class="col-md-4 mt-4">
             <h3 class="d-flex justify-content-center">Contact us</h3>
-            <form id="sendMessageForContactUs">
+            <form id="sendMessageForContactUs" action="/api/report" method="post">
               <div class="mb-3 me-3 ms-3">
                 <label for="emailInput" class="form-label">Email address</label>
                 <input
@@ -376,6 +377,7 @@
                   class="form-control"
                   id="emailInput"
                   placeholder="name@example.com"
+                  name="email"
                   required
                 />
               </div>
@@ -386,6 +388,7 @@
                   id="messageInput"
                   rows="3"
                   placeholder="Type message here"
+                  name="message"
                   required
                 ></textarea
                 ><br />
@@ -400,5 +403,5 @@
     </footer>
   </body>
   <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/javascripts/upload.js"></script>
+  <script src="/javascripts/report.js"></script>
 </html>
