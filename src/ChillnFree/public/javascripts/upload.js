@@ -1,7 +1,7 @@
 const jsmediatags = window.jsmediatags;
 const picture_cover = document.querySelector("#picture-cover");
 const fileInput = document.querySelector("#chooseFile");
-
+let isCover;
 const getMediaTagsFromAudioFile = (
   input,
   fields = ["album", "artist", "genre", "picture", "title", "track", "year"]
@@ -46,10 +46,16 @@ fileInput.onchange = async (event) => {
   getMediaTagsFromAudioFile(file)
     .then((mediaTags) => {
       //add base64String to picture cover front src and show it
-      const base64String = arrayBufferToBase64(mediaTags.picture.data);
-      picture_cover.src = `data:${mediaTags.picture.format};base64,${base64String}`;
+      if (mediaTags.picture) {
+        const base64String = arrayBufferToBase64(mediaTags.picture.data);
+        picture_cover.src = `data:${mediaTags.picture.format};base64,${base64String}`;
+        isCover = true;
+      } else {
+        picture_cover.src =
+          "https://res.cloudinary.com/chillnfree/image/upload/v1640229901/ChillnFree/chill_logo_vwbdjq.png";
+        isCover = false;
+      }
       picture_cover.classList.remove("d-none");
-
       //add title to title field in form
       document.querySelector("#title").value = mediaTags.title;
 
@@ -64,27 +70,35 @@ fileInput.onchange = async (event) => {
 const uploadForm = document.querySelector("#uploadForm");
 uploadForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  document.querySelector('#btn-submit').classList.add("disabled");
+  document.querySelector("#btn-submit-loading").classList.remove("d-none");
+  document.querySelector("#btn-submit").classList.add("d-none");
   let formData = new FormData(uploadForm);
-  let rawBlob = await fetch(picture_cover.src);
-  let blob = await rawBlob.blob();
-  //console.log(blob);
-  formData.append("image", blob, "cover.jpg");
-
-  console.log(formData);
-  const rawResponse = await fetch("/upload", {
+  let rawResponse;
+  if (isCover) {
+    let rawBlob = await fetch(picture_cover.src);
+    let blob = await rawBlob.blob();
+    formData.append("image", blob, "cover.jpg");
+    rawResponse = await fetch("/upload", {
     method: "POST",
     body: formData,
-  });
+  })
+  }else{
+    rawResponse = await fetch("/upload/no-cover", {
+    method: "POST",
+    body: formData,
+    })
+  }
+
+  console.log(formData);
+  
 
   let data = await rawResponse.json();
 
   if (data.success) {
     uploadForm.reset();
     picture_cover.classList.add("d-none");
-    document.querySelector('#btn-submit').classList.remove("disabled");
+    document.querySelector("#btn-submit-loading").classList.add("d-none");
+    document.querySelector("#btn-submit").classList.remove("d-none");
     alert("Upload successfully");
   }
 });
-
-document.querySelector("#uploadForm").addEventListener("submit", uploadForm);

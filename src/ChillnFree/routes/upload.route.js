@@ -39,4 +39,16 @@ router.post(
   }
 );
 
+
+router.post(
+  "/no-cover",
+  SignedInAllowed,
+  saveRedirectUrlToCookie,
+  upload.single("file"),
+  saveSongToMongo,
+  (req, res, next) => {
+    res.json({success: true});
+  }
+);
+
 module.exports = router;

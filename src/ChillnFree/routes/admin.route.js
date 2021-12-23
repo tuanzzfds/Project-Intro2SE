@@ -3,9 +3,27 @@ var router = express.Router();
 const Admin = require("../models/admin.model");
 const adminController = require("../controllers/admin.controller");
 
-router.get("/", (req, res, next) => {
-  res.render("admin-sign-in", { title: "Admin - ChillnFree" });
+router.get("/", async (req, res, next) => {
+  if (req.cookies.isAdmin){
+    const songs = await adminController.getAllSongsInJSON();
+    const allUsers = await adminController.getAllUsersInJSON();
+    const feedbacks = await adminController.getAllReportsInJSON();
+    const recentlyRegisteredUsers = [...allUsers];
+    res.render("admin-dashboard", {
+      recentlyRegisteredUsers,
+      feedbacks,
+      allUsers,
+      songs,
+    });
+  }else{
+    res.render("admin-sign-in", { title: "Admin - ChillnFree" });
+  }
 });
+
+router.get("/sign-out", (req,res,next)=>{
+  res.clearCookie("isAdmin")
+  res.redirect("/admin")
+})
 
 router.get("/dashboard", async (req, res, next) => {
   if (!req.cookies.isAdmin) {
@@ -31,12 +49,13 @@ router.post("/sign-in", async (req, res, next) => {
     const admin = await Admin.findOne({ user: user, password: password });
     if (admin) {
     //   res.cookie("isAdmin",false);
-        console.log("thanh cong");
+      console.log("thanh cong");
       res.cookie("isAdmin",true);
-      res.redirect("/admin/dashboard");
+      res.json({success:true})
     } else {
       console.log("not thanh cong");
-      res.redirect("/admin");
+      res.json({success:false})
+      // res.redirect("/admin");
     }
   } catch (err) {
     res.redirect("/admin");

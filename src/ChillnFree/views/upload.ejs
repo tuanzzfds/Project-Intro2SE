@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/footer.css" />
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/fontawesome-free/css/all.css">  
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
       integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ=="
@@ -266,6 +267,7 @@
                 id="title"
                 class="form-control"
                 placeholder="Default by chosen song"
+                required
               />
             </div>
             <div class="input-group my-3">
@@ -276,6 +278,7 @@
                 id="artist"
                 class="form-control"
                 placeholder="Default by chosen song"
+                required
               />
             </div>
             <div class="input-group my-3">
@@ -286,11 +289,15 @@
                 id="genre"
                 class="form-control"
                 placeholder="Default by chosen song"
+                required
               />
             </div>
             <div class="form-group d-grid gap-2 my-3">
               <button type="submit" class="btn btn-primary btn-block" id="btn-submit" >
                 Upload
+              </button>
+              <button class="buttonload btn btn-primary btn-block  d-none" id="btn-submit-loading">
+                <i class="fa fa-spinner fa-spin"></i> Uploading....
               </button>
             </div>
           </form>
